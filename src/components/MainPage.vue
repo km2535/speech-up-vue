@@ -1,19 +1,5 @@
 <template>
   <div class="main-container">
-    <!-- Navbar -->
-    <header class="navbar">
-      <div class="container">
-        <h1 class="logo">SpeechUP</h1>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <router-link to="/speech">Speech</router-link>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -23,7 +9,7 @@
           Record, analyze, and improve your speech with our AI-powered tools. Perfect for learners, professionals, and anyone looking to communicate better.
         </p>
         <div class="hero-buttons">
-          <button class="btn primary-btn">Get Started</button>
+          <button class="btn primary-btn"><router-link to="/speech" class="btn primary-btn">Speech</router-link></button>
         </div>
       </div>
     </section>
