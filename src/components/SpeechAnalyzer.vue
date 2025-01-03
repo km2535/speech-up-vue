@@ -10,6 +10,7 @@
       <h3>Analysis Complete</h3>
       <ul>
         <li><strong>State : </strong> {{ analysisResults.result }}</li>
+        <li><strong>Language : </strong> {{ language }}</li>
         <li><strong>Data : </strong> {{ analysisResults.data }}</li>
       </ul>
     </div>
@@ -25,6 +26,10 @@ import axios from "axios";
 export default {
   name: "SpeechAnalyzer",
   props: {
+    language:{
+      type:String,
+      required: true
+    },
     audioData: {
       type: String,
       required: true,
@@ -50,10 +55,9 @@ export default {
     async analyzeSpeech(audioData) {
       this.isLoading = true;
       this.analysisResults = null;
-
       const formData = new FormData();
       formData.append("file", audioData);
-
+      formData.append("lang", this.language);
 
       let config = {
         method: 'post',

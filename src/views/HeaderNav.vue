@@ -5,10 +5,9 @@
 </script>
 
 <template>
-  <!-- Navbar -->
   <header class="navbar">
     <div class="container">
-      <h1 class="logo">SpeechUP</h1>
+      <h1 class="logo"><router-link to="/">SpeechUp</router-link></h1>
       <nav>
         <ul class="nav-links">
           <li><router-link to="/">Home</router-link></li>

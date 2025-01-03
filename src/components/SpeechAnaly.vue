@@ -7,6 +7,10 @@
     <div class="input-container">
       <input type="file" @change="handleFileUpload" accept="audio/*" id="file-upload" />
       <label for="file-upload" class="custom-file-upload">Upload Audio</label>
+      <select @change="handleFileType" id="lang" class="custom-select">
+        <option value="ko" >kor</option>
+        <option value="en" >eng</option>
+      </select>
     </div>
 
     <div class="button-container">
@@ -18,7 +22,7 @@
       </button>
     </div>
     <SampleAudio v-if="sampleAudio" :sampleAudio="sampleAudio"/>
-    <SpeechAnalyzer v-if="audioData" :audioData="audioData" />
+    <SpeechAnalyzer v-if="audioData" :audioData="audioData"  :language="language"/>
   </div>
 </template>
 
@@ -32,10 +36,14 @@ export default {
     return {
       audioData: null,
       sampleAudio: null,
+      language: 'ko',
       isRecording: false,
     }
   },
   methods: {
+    handleFileType(event){
+      this.language = event.target.value;
+    },
     handleFileUpload(event) {
       const file = event.target.files[0]
       if (file) {
@@ -174,4 +182,36 @@ button:disabled {
   background-color: #e64a19;
   transform: scale(1.05);
 }
+.custom-select {
+  appearance: none; /* 기본 브라우저 스타일 제거 */
+  -webkit-appearance: none; /* 사파리 브라우저 지원 */
+  -moz-appearance: none; /* 파이어폭스 브라우저 지원 */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  padding: 10px 15px;
+  width: 60px;
+  margin: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.custom-select:hover {
+  background-color: #eaeaea;
+  border-color: #bbb;
+}
+
+.custom-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.custom-select option {
+  font-size: 16px;
+  padding: 10px;
+}
+
 </style>
