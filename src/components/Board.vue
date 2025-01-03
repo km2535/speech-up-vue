@@ -16,7 +16,7 @@ export default {
     async getBoard() {
       let config = {
         method: "get",
-        url: "http://localhost:3000/word-board",  // API 호출 URL
+        url: `${import.meta.env.VITE_API_HOST}/word-board`,  // API 호출 URL
       };
       const response = await axios.request(config);
       this.posts = response.data.data.map((post) => ({

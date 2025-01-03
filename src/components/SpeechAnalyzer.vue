@@ -62,7 +62,7 @@ export default {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:3000/stt/convert',
+        url:  `${import.meta.env.VITE_API_HOST}/stt/convert`,
         headers: {
           "Content-Type": "multipart/form-data",
         },

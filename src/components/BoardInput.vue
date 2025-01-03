@@ -31,12 +31,12 @@ export default {
   },
   methods: {
     async submitText() {
-      const data = (await axios.get('http://localhost:3000/word-board')).data?.data;
+      const data = (await axios.get(`${import.meta.env.VITE_API_HOST}/word-board`)).data?.data;
       const inputData = this.inputText.trim();
       this.redisContent = data;
       this.redisContent.push(inputData);
       if (inputData) {
-        await axios.post('http://localhost:3000/word-board',{
+        await axios.post(`${import.meta.env.VITE_API_HOST}/word-board`,{
           "redisContent": this.redisContent
         })
         this.$emit('update-posts', inputData);
